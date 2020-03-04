@@ -1,4 +1,4 @@
-# GraphQL Best Practices
+# Possible topics
 
 
 ## Index
