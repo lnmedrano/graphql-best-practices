@@ -15,8 +15,9 @@
 - [5- Pagination](#pagination)
 - [6- Caching and Batching](#cachingAndBatching)
 - [7- Authentication and Authorization](#auth)
-- [8- API versioning](#versioning)
-- [9- Apollo Server](#apolloServer)
+- [8- Error handling](#errorHandling)
+- [9- API versioning](#versioning)
+- [10- Apollo Server](#apolloServer)
 
 
 
@@ -34,6 +35,7 @@
 ## Pagination <a name="pagination"></a>
 ## Caching and Batching <a name="cachingAndBatching"></a>
 ## Authentication and Authorization <a name="auth"></a>
+## Error handling <a name="errorHanling"></a>
 ## API versioning <a name="versioning"></a>
 ## Apollo Server <a name="apolloServer"></a>
 
