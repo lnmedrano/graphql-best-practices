@@ -57,4 +57,8 @@ The purpose of this document is to present the conventions and standards used at
 ## Apollo Server <a name="apolloServer"></a>
 
 ## Useful Links <a name="links"></a>
-- [GraphQL Specification](https://spec.graphql.org/) 
+
+- [GraphQL Specification](https://spec.graphql.org/)
+- [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
+- [GraphQL Resolvers: Best Practices](https://medium.com/paypal-engineering/graphql-resolvers-best-practices-cd36fdbcef55) by PayPal Engineering
+- [Apollo Blog](https://blog.apollographql.com/)
