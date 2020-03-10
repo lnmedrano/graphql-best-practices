@@ -31,9 +31,9 @@ The purpose of this document is to present the conventions and standards used at
 
 ### Mutations <a name="mutations"></a>
 
-Name your mutations verb first. Then the object, or “noun,” if applicable. e.g: `createUser`.
+Name your mutations verb first, then the object or "noun". e.g: `createUser`.
 
-Mutations should have only one input argument, named `input`, and should have non-null, unique, input object type.
+Mutations should have only one input argument, named `input`, and should have non-null, unique, input object type. Then you should try to nest the input object, this gives you room to easily deprecate sections of the API or add new ones.
 
 ### Schemas <a name="schemas"></a>
 
