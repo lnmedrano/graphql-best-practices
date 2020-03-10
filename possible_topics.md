@@ -6,6 +6,7 @@
 - [2- Serving over http](#http)
 - [3- Main elements](#mainElements)
   - [3.1- Queries](#queries)
+    - [3.1.1- Main aspects](#queriesMainAspects)
   - [3.2- Mutations](#mutations)
   - [3.3- Types](#types)
   - [3.4- Resolvers](#resolvers)
@@ -20,15 +21,28 @@
 - [10- Apollo Server](#apolloServer)
 - [11- Useful Links](#links)
 
-## Objective <a name="objective"></a>
+## 1- Objective <a name="objective"></a>
 
 The purpose of this document is to present the conventions and standards used at Wolox for GraphQL. It is supposed to cover the main aspects of GraphQL from the Wolox's approach to it.
 
-## Serving over HTTP <a name="http"></a>
+## 2- Serving over HTTP <a name="http"></a>
 
-## Main Elements <a name="mainElements"></a>
+## 3- Main Elements <a name="mainElements"></a>
 
-### Queries <a name="queries"></a>
+### 3.1- Queries <a name="queries"></a>
+
+#### Main aspects <a name="queriesMainAspects"></a>
+
+**Important** Queries must be used only to fetch resources, and not to modify them.
+
+#### Naming conventions
+
+Queries should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, verb get shouldn't be used.
+
+Examples:
+
+- `user` to get one user.
+- `users` to get more than one user.
 
 ### Mutations <a name="mutations"></a>
 
