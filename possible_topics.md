@@ -18,6 +18,7 @@
 - [8- Error handling](#errorHandling)
 - [9- API versioning](#versioning)
 - [10- Apollo Server](#apolloServer)
+- [11- Useful Links](#links)
 
 ## Objective <a name="objective"></a>
 
@@ -25,7 +26,7 @@ The purpose of this document is to present the conventions and standards used at
 
 ## Serving over http <a name="http"></a>
 
-## Main elements <a name="mainElements"></a>
+## Main Elements <a name="mainElements"></a>
 
 ### Queries <a name="queries"></a>
 
@@ -54,3 +55,10 @@ The purpose of this document is to present the conventions and standards used at
 ## API versioning <a name="versioning"></a>
 
 ## Apollo Server <a name="apolloServer"></a>
+
+## Useful Links <a name="links"></a>
+
+- [GraphQL Specification](https://spec.graphql.org/)
+- [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
+- [GraphQL Resolvers: Best Practices](https://medium.com/paypal-engineering/graphql-resolvers-best-practices-cd36fdbcef55) by Mark Stuart
+- [Apollo Blog](https://blog.apollographql.com/)
