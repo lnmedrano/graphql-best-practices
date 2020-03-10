@@ -1,7 +1,7 @@
 # GraphQL Best Practices
 
+## Index
 
-# Index
 - [1- Objective](#objective)
 - [2- Serving over http](#http)
 - [3- Main elements](#mainElements)
@@ -19,27 +19,38 @@
 - [9- API versioning](#versioning)
 - [10- Apollo Server](#apolloServer)
 
-
-
-# Objective <a name="objective"></a>
+## Objective <a name="objective"></a>
 
 The purpose of this document is to present the conventions and standards used at Wolox for GraphQL. It is supposed to cover the main aspects of GraphQL from the Wolox's approach to it.
 
-# Serving over http <a name="http"></a>
-# Main elements <a name="mainElements"></a>
-  ## Queries <a name="queries"></a>
-  ## Mutations <a name="mutations"></a>
-  ## Schemas <a name="schemas"></a>
-  ## Types <a name="types"></a>
-  ## Resolvers <a name="resolvers"></a>
-  ## Field-resolvers <a name="fieldResolvers"></a>
-  ## Subscriptions <a name="subscriptions"></a>
-# Nullability <a name="nullability"></a>
-# Pagination <a name="pagination"></a>
-# Caching and Batching <a name="cachingAndBatching"></a>
-# Authentication and Authorization <a name="auth"></a>
-# Error handling <a name="errorHanling"></a>
-# API versioning <a name="versioning"></a>
-# Apollo Server <a name="apolloServer"></a>
+## Serving over http <a name="http"></a>
 
-  
+## Main elements <a name="mainElements"></a>
+
+### Queries <a name="queries"></a>
+
+### Mutations <a name="mutations"></a>
+
+### Schemas <a name="schemas"></a>
+
+### Types <a name="types"></a>
+
+### Resolvers <a name="resolvers"></a>
+
+### Field-resolvers <a name="fieldResolvers"></a>
+
+### Subscriptions <a name="subscriptions"></a>
+
+## Nullability <a name="nullability"></a>
+
+## Pagination <a name="pagination"></a>
+
+## Caching and Batching <a name="cachingAndBatching"></a>
+
+## Authentication and Authorization <a name="auth"></a>
+
+## Error handling <a name="errorHanling"></a>
+
+## API versioning <a name="versioning"></a>
+
+## Apollo Server <a name="apolloServer"></a>
