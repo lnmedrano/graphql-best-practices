@@ -6,12 +6,12 @@
 - [2- Serving over http](#http)
 - [3- Main elements](#mainElements)
   - [3.1- Queries](#queries)
-    - [3.1.1- Main aspects](#queriesMainAspects)
   - [3.2- Mutations](#mutations)
   - [3.3- Types](#types)
   - [3.4- Resolvers](#resolvers)
   - [3.5- Field-resolvers](#fieldResolvers)
   - [3.6- Subscriptions](#subscriptions)
+  - [3.7- Schemas](#schemas)
 - [4- Nullability](#nullability)
 - [5- Pagination](#pagination)
 - [6- Caching and Batching](#cachingAndBatching)
@@ -31,46 +31,87 @@ The purpose of this document is to present the conventions and standards used at
 
 ### 3.1- Queries <a name="queries"></a>
 
-#### Main aspects <a name="queriesMainAspects"></a>
+- **Important:**  Queries must be used only to fetch resources, not to modify nor delete them.
+- Queries names should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, verb get shouldn't be used. For example:
+  - `user` to get one user.
+  - `users` to get more than one user.
+  - `usersFromTags` some hypothetical case of getting users that match with some tags.
 
-**Important** Queries must be used only to fetch resources, and not to modify them.
+- Arguments must be a set of key-value pairs comma separated (in the resolver the arguments are received in an objetc and destructuring is possible and convenient). A max of 4 arguments is recommended. For example:
 
-#### Naming conventions
+  ```graphql
+  query {
+    user(firstName: 'John', lastname: 'Doe'){}`
+  }
+  ```
 
-Queries should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, verb get shouldn't be used.
+- The queries should be as nested as possible. The fields that are being asked must not be comma separated.
 
-Examples:
+  ```graphql
+  query {
+    user(firstName: 'John', lastName: 'Doe'){
+      firstName
+      lastName
+      email
+      contactUser {
+        firstName
+        lastName
+        email
+      }
+      books {
+        title
+        calification
+        author {
+          firstName
+          lastName
+          birthDate
+        }
+      }
+    }
+  }
+  ```
 
-- `user` to get one user.
-- `users` to get more than one user.
+- Variables are allowed.
 
-### Mutations <a name="mutations"></a>
+  ```graphql
+  query {
+      user($firstName: 'John', $lastname: 'Doe') {
+        friends(firstName: $firstName, lastName: $lastName) {
+          firstName
+          lastName
+          email
+        }
+      }
+    }
+  ```
 
-### Schemas <a name="schemas"></a>
+### 3.2- Mutations <a name="mutations"></a>
 
-### Types <a name="types"></a>
+### 3.3- Types <a name="types"></a>
 
-### Resolvers <a name="resolvers"></a>
+### 3.4- Resolvers <a name="resolvers"></a>
 
-### Field-resolvers <a name="fieldResolvers"></a>
+### 3.5- Field-resolvers <a name="fieldResolvers"></a>
 
-### Subscriptions <a name="subscriptions"></a>
+### 3.6- Subscriptions <a name="subscriptions"></a>
 
-## Nullability <a name="nullability"></a>
+### 3.7- Schemas <a name="schemas"></a>
 
-## Pagination <a name="pagination"></a>
+## 4- Nullability <a name="nullability"></a>
 
-## Caching and Batching <a name="cachingAndBatching"></a>
+## 5- Pagination <a name="pagination"></a>
 
-## Authentication and Authorization <a name="auth"></a>
+## 6- Caching and Batching <a name="cachingAndBatching"></a>
 
-## Error Handling <a name="errorHandling"></a>
+## 7- Authentication and Authorization <a name="auth"></a>
 
-## API Versioning <a name="versioning"></a>
+## 8- Error Handling <a name="errorHandling"></a>
 
-## Apollo Server <a name="apolloServer"></a>
+## 9- API Versioning <a name="versioning"></a>
 
-## Useful Links <a name="links"></a>
+## 10- Apollo Server <a name="apolloServer"></a>
+
+## 11- Useful Links <a name="links"></a>
 
 - [GraphQL Specification](https://spec.graphql.org/)
 - [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
