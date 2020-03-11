@@ -18,14 +18,15 @@
 - [8- Error handling](#errorHandling)
 - [9- API versioning](#versioning)
 - [10- Apollo Server](#apolloServer)
+- [11- Useful Links](#links)
 
 ## Objective <a name="objective"></a>
 
 The purpose of this document is to present the conventions and standards used at Wolox for GraphQL. It is supposed to cover the main aspects of GraphQL from the Wolox's approach to it.
 
-## Serving over http <a name="http"></a>
+## Serving over HTTP <a name="http"></a>
 
-## Main elements <a name="mainElements"></a>
+## Main Elements <a name="mainElements"></a>
 
 ### Queries <a name="queries"></a>
 
@@ -53,8 +54,15 @@ Mutations should have only one input argument, named `input`, and should have no
 
 ## Authentication and Authorization <a name="auth"></a>
 
-## Error handling <a name="errorHanling"></a>
+## Error Handling <a name="errorHandling"></a>
 
-## API versioning <a name="versioning"></a>
+## API Versioning <a name="versioning"></a>
 
 ## Apollo Server <a name="apolloServer"></a>
+
+## Useful Links <a name="links"></a>
+
+- [GraphQL Specification](https://spec.graphql.org/)
+- [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
+- [GraphQL Resolvers: Best Practices](https://medium.com/paypal-engineering/graphql-resolvers-best-practices-cd36fdbcef55) by Mark Stuart
+- [Apollo Blog](https://blog.apollographql.com/)
