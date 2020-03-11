@@ -136,4 +136,4 @@ The purpose of this document is to present the conventions and standards used at
 
 ## 12- Bibliography <a name="bibliography"></a>
 
-Bilbiography used by the authors of this documents can bu found at [bibliography](./bibliography.md)
+Bilbiography used by the authors of this documents can be found at [bibliography](./bibliography.md)
