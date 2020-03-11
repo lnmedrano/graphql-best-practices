@@ -20,6 +20,7 @@
 - [9- API versioning](#versioning)
 - [10- Apollo Server](#apolloServer)
 - [11- Useful Links](#links)
+- [12- Bibliography](#bibliography)
 
 ## 1- Objective <a name="objective"></a>
 
@@ -131,3 +132,8 @@ The purpose of this document is to present the conventions and standards used at
 - [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
 - [GraphQL Resolvers: Best Practices](https://medium.com/paypal-engineering/graphql-resolvers-best-practices-cd36fdbcef55) by Mark Stuart
 - [Apollo Blog](https://blog.apollographql.com/)
+- [GraphQL official site](https://graphql.org)
+
+## 12- Bibliography <a name="bibliography"></a>
+
+Bilbiography used by the authors of this documents can bu found at [bibliography](./bibliography.md)
