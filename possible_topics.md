@@ -31,11 +31,11 @@ The purpose of this document is to present the conventions and standards used at
 
 ### 3.1- Queries <a name="queries"></a>
 
-- **Important:**  Queries must be used only to fetch resources, not to modify nor delete them.
-- Queries names should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, verb get shouldn't be used. For example:
+- **Queries must be used only to fetch resources, not to modify nor delete them.**
+- Queries names should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, _get_ and _fetch_ verbs shouldn't be used. For example:
   - `user` to get one user.
   - `users` to get more than one user.
-  - `usersFromTags` some hypothetical case of getting users that match with some tags.
+  - `usersFromTags` on some hypothetical case of getting users that match with some tags.
 
 - Arguments must be a set of key-value pairs comma separated (in the resolver the arguments are received in an objetc and destructuring is possible and convenient). A max of 4 arguments is recommended. For example:
 
@@ -71,12 +71,26 @@ The purpose of this document is to present the conventions and standards used at
   }
   ```
 
-- Variables are allowed.
+- Variables, directives and  are allowed.
 
   ```graphql
   query {
-      user($firstName: 'John', $lastname: 'Doe') {
-        friends(firstName: $firstName, lastName: $lastName) {
+      user($firstName: 'John', lastname: 'Doe') {
+        friends(firstName: $firstName) {
+          firstName
+          lastName
+          email
+        }
+      }
+    }
+  ```
+
+  Note: In the example above, we are getting all John Doe's friends that have his same name.
+
+  ```graphql
+  query {
+      user($firstName: 'John', $lastname: 'Doe', $showFriends: true) {
+        friends @include(if: $showFriends) {
           firstName
           lastName
           email
