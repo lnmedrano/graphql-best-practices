@@ -4,35 +4,35 @@
 
 - [GraphQL Best Practices](#graphql-best-practices)
   - [Index](#index)
-  - [1- Objective <a name="objective"></a>](#1--objective)
-  - [2- Serving over HTTP <a name="http"></a>](#2--serving-over-http)
-  - [3- Main Elements <a name="mainElements"></a>](#3--main-elements)
-    - [3.1- Queries <a name="queries"></a>](#31--queries)
-    - [3.2- Mutations <a name="mutations"></a>](#32--mutations)
-    - [3.3- Types <a name="types"></a>](#33--types)
-    - [3.4- Resolvers <a name="resolvers"></a>](#34--resolvers)
-    - [3.5- Field-resolvers <a name="fieldResolvers"></a>](#35--field-resolvers)
-    - [3.6- Subscriptions <a name="subscriptions"></a>](#36--subscriptions)
-    - [3.7- Schemas <a name="schemas"></a>](#37--schemas)
-  - [4- Nullability <a name="nullability"></a>](#4--nullability)
-  - [5- Pagination <a name="pagination"></a>](#5--pagination)
-  - [6- Caching and Batching <a name="cachingAndBatching"></a>](#6--caching-and-batching)
-  - [7- Authentication and Authorization <a name="auth"></a>](#7--authentication-and-authorization)
-  - [8- Error Handling <a name="errorHandling"></a>](#8--error-handling)
-  - [9- API Versioning <a name="versioning"></a>](#9--api-versioning)
-  - [10- Apollo Server <a name="apolloServer"></a>](#10--apollo-server)
-  - [11- Useful Links <a name="links"></a>](#11--useful-links)
-  - [12- Bibliography <a name="bibliography"></a>](#12--bibliography)
+  - [1- Objective](#1--objective)
+  - [2- Serving over HTTP](#2--serving-over-http)
+  - [3- Main Elements](#3--main-elements)
+    - [3.1- Queries](#31--queries)
+    - [3.2- Mutations](#32--mutations)
+    - [3.3- Types](#33--types)
+    - [3.4- Resolvers](#34--resolvers)
+    - [3.5- Field-resolvers](#35--field-resolvers)
+    - [3.6- Subscriptions](#36--subscriptions)
+    - [3.7- Schemas](#37--schemas)
+  - [4- Nullability](#4--nullability)
+  - [5- Pagination](#5--pagination)
+  - [6- Caching and Batching](#6--caching-and-batching)
+  - [7- Authentication and Authorization](#7--authentication-and-authorization)
+  - [8- Error Handling](#8--error-handling)
+  - [9- API Versioning](#9--api-versioning)
+  - [10- Apollo Server](#10--apollo-server)
+  - [11- Useful Links](#11--useful-links)
+  - [12- Bibliography](#12--bibliography)
 
-## 1- Objective <a name="objective"></a>
+## 1- Objective
 
 The purpose of this document is to present the conventions and standards used at Wolox for GraphQL. It is supposed to cover the main aspects of GraphQL from the Wolox's approach to it.
 
-## 2- Serving over HTTP <a name="http"></a>
+## 2- Serving over HTTP
 
-## 3- Main Elements <a name="mainElements"></a>
+## 3- Main Elements
 
-### 3.1- Queries <a name="queries"></a>
+### 3.1- Queries
 
 - **Queries must be used only to fetch resources, not to modify nor delete them.**
 - Queries names should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, _get_ and _fetch_ verbs shouldn't be used. For example:
@@ -102,33 +102,33 @@ The purpose of this document is to present the conventions and standards used at
     }
   ```
 
-### 3.2- Mutations <a name="mutations"></a>
+### 3.2- Mutations
 
-### 3.3- Types <a name="types"></a>
+### 3.3- Types
 
-### 3.4- Resolvers <a name="resolvers"></a>
+### 3.4- Resolvers
 
-### 3.5- Field-resolvers <a name="fieldResolvers"></a>
+### 3.5- Field-resolvers
 
-### 3.6- Subscriptions <a name="subscriptions"></a>
+### 3.6- Subscriptions
 
-### 3.7- Schemas <a name="schemas"></a>
+### 3.7- Schemas
 
-## 4- Nullability <a name="nullability"></a>
+## 4- Nullability
 
-## 5- Pagination <a name="pagination"></a>
+## 5- Pagination
 
-## 6- Caching and Batching <a name="cachingAndBatching"></a>
+## 6- Caching and Batching
 
-## 7- Authentication and Authorization <a name="auth"></a>
+## 7- Authentication and Authorization
 
-## 8- Error Handling <a name="errorHandling"></a>
+## 8- Error Handling
 
-## 9- API Versioning <a name="versioning"></a>
+## 9- API Versioning
 
-## 10- Apollo Server <a name="apolloServer"></a>
+## 10- Apollo Server
 
-## 11- Useful Links <a name="links"></a>
+## 11- Useful Links
 
 - [GraphQL Specification](https://spec.graphql.org/)
 - [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
@@ -136,6 +136,6 @@ The purpose of this document is to present the conventions and standards used at
 - [Apollo Blog](https://blog.apollographql.com/)
 - [GraphQL official site](https://graphql.org)
 
-## 12- Bibliography <a name="bibliography"></a>
+## 12- Bibliography
 
 Bilbiography used by the authors of this documents can be found at [bibliography](./bibliography.md)
