@@ -2,63 +2,140 @@
 
 ## Index
 
-- [1- Objective](#objective)
-- [2- Serving over http](#http)
-- [3- Main elements](#mainElements)
-  - [3.1- Queries](#queries)
-  - [3.2- Mutations](#mutations)
-  - [3.3- Types](#types)
-  - [3.4- Resolvers](#resolvers)
-  - [3.5- Field-resolvers](#fieldResolvers)
-  - [3.6- Subscriptions](#subscriptions)
-- [4- Nullability](#nullability)
-- [5- Pagination](#pagination)
-- [6- Caching and Batching](#cachingAndBatching)
-- [7- Authentication and Authorization](#auth)
-- [8- Error handling](#errorHandling)
-- [9- API versioning](#versioning)
-- [10- Apollo Server](#apolloServer)
-- [11- Useful Links](#links)
+- [GraphQL Best Practices](#graphql-best-practices)
+  - [Index](#index)
+  - [1- Objective <a name="objective"></a>](#1--objective)
+  - [2- Serving over HTTP <a name="http"></a>](#2--serving-over-http)
+  - [3- Main Elements <a name="mainElements"></a>](#3--main-elements)
+    - [3.1- Queries <a name="queries"></a>](#31--queries)
+    - [3.2- Mutations <a name="mutations"></a>](#32--mutations)
+    - [3.3- Types <a name="types"></a>](#33--types)
+    - [3.4- Resolvers <a name="resolvers"></a>](#34--resolvers)
+    - [3.5- Field-resolvers <a name="fieldResolvers"></a>](#35--field-resolvers)
+    - [3.6- Subscriptions <a name="subscriptions"></a>](#36--subscriptions)
+    - [3.7- Schemas <a name="schemas"></a>](#37--schemas)
+  - [4- Nullability <a name="nullability"></a>](#4--nullability)
+  - [5- Pagination <a name="pagination"></a>](#5--pagination)
+  - [6- Caching and Batching <a name="cachingAndBatching"></a>](#6--caching-and-batching)
+  - [7- Authentication and Authorization <a name="auth"></a>](#7--authentication-and-authorization)
+  - [8- Error Handling <a name="errorHandling"></a>](#8--error-handling)
+  - [9- API Versioning <a name="versioning"></a>](#9--api-versioning)
+  - [10- Apollo Server <a name="apolloServer"></a>](#10--apollo-server)
+  - [11- Useful Links <a name="links"></a>](#11--useful-links)
+  - [12- Bibliography <a name="bibliography"></a>](#12--bibliography)
 
-## Objective <a name="objective"></a>
+## 1- Objective <a name="objective"></a>
 
 The purpose of this document is to present the conventions and standards used at Wolox for GraphQL. It is supposed to cover the main aspects of GraphQL from the Wolox's approach to it.
 
-## Serving over HTTP <a name="http"></a>
+## 2- Serving over HTTP <a name="http"></a>
 
-## Main Elements <a name="mainElements"></a>
+## 3- Main Elements <a name="mainElements"></a>
 
-### Queries <a name="queries"></a>
+### 3.1- Queries <a name="queries"></a>
 
-### Mutations <a name="mutations"></a>
+- **Queries must be used only to fetch resources, not to modify nor delete them.**
+- Queries names should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, _get_ and _fetch_ verbs shouldn't be used. For example:
+  - `user` to get one user.
+  - `users` to get more than one user.
+  - `usersFromTags` on some hypothetical case of getting users that match with some tags.
 
-### Schemas <a name="schemas"></a>
+- Arguments must be a set of key-value pairs comma separated (in the resolver the arguments are received in an objetc and destructuring is possible and convenient). A max of 4 arguments is recommended. For example:
 
-### Types <a name="types"></a>
+  ```graphql
+  query {
+    user(firstName: 'John', lastname: 'Doe'){}`
+  }
+  ```
 
-### Resolvers <a name="resolvers"></a>
+- The queries should be as nested as possible. The fields that are being asked must not be comma separated.
 
-### Field-resolvers <a name="fieldResolvers"></a>
+  ```graphql
+  query {
+    user(firstName: 'John', lastName: 'Doe'){
+      firstName
+      lastName
+      email
+      contactUser {
+        firstName
+        lastName
+        email
+      }
+      books {
+        title
+        calification
+        author {
+          firstName
+          lastName
+          birthDate
+        }
+      }
+    }
+  }
+  ```
 
-### Subscriptions <a name="subscriptions"></a>
+- Variables, directives and fragments are allowed.
 
-## Nullability <a name="nullability"></a>
+  ```graphql
+  query {
+      user($firstName: 'John', lastname: 'Doe') {
+        friends(firstName: $firstName) {
+          firstName
+          lastName
+          email
+        }
+      }
+    }
+  ```
 
-## Pagination <a name="pagination"></a>
+  Note: In the example above, we are getting all John Doe's friends that have his same name.
 
-## Caching and Batching <a name="cachingAndBatching"></a>
+  ```graphql
+  query {
+      user($firstName: 'John', $lastname: 'Doe', $showFriends: true) {
+        friends @include(if: $showFriends) {
+          firstName
+          lastName
+          email
+        }
+      }
+    }
+  ```
 
-## Authentication and Authorization <a name="auth"></a>
+### 3.2- Mutations <a name="mutations"></a>
 
-## Error Handling <a name="errorHandling"></a>
+### 3.3- Types <a name="types"></a>
 
-## API Versioning <a name="versioning"></a>
+### 3.4- Resolvers <a name="resolvers"></a>
 
-## Apollo Server <a name="apolloServer"></a>
+### 3.5- Field-resolvers <a name="fieldResolvers"></a>
 
-## Useful Links <a name="links"></a>
+### 3.6- Subscriptions <a name="subscriptions"></a>
+
+### 3.7- Schemas <a name="schemas"></a>
+
+## 4- Nullability <a name="nullability"></a>
+
+## 5- Pagination <a name="pagination"></a>
+
+## 6- Caching and Batching <a name="cachingAndBatching"></a>
+
+## 7- Authentication and Authorization <a name="auth"></a>
+
+## 8- Error Handling <a name="errorHandling"></a>
+
+## 9- API Versioning <a name="versioning"></a>
+
+## 10- Apollo Server <a name="apolloServer"></a>
+
+## 11- Useful Links <a name="links"></a>
 
 - [GraphQL Specification](https://spec.graphql.org/)
 - [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
 - [GraphQL Resolvers: Best Practices](https://medium.com/paypal-engineering/graphql-resolvers-best-practices-cd36fdbcef55) by Mark Stuart
 - [Apollo Blog](https://blog.apollographql.com/)
+- [GraphQL official site](https://graphql.org)
+
+## 12- Bibliography <a name="bibliography"></a>
+
+Bilbiography used by the authors of this documents can be found at [bibliography](./bibliography.md)
