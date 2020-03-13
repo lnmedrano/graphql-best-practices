@@ -108,6 +108,78 @@ The purpose of this document is to present the conventions and standards used at
 
 ### 3.4- Resolvers
 
+Resolvers, in graphql, works the same way for mutations and resolvers (nevertheless remember that we must not use a query resolver to modify nor delete data).
+
+Note: The examples shown here are written in JavaScript, but resolvers are functions and they can be implemented in any language.
+
+- Given that the resolvers are functions, they must follow the naming convention used in the technology and project we are working in.
+
+- Resolvers should be kept as specific as possible. This way, we can take advantage of GraphQL performance.
+
+  For example. Lets suppose we have this query
+
+  ```graphql
+  query{
+    user(id: 1){
+      id
+      name
+      phones {
+        number
+        prefix
+      }
+    }
+  }
+  ```
+
+  If a resolver is used to get `id` and `name`, and another one is used to get the phones; when the user doesn't ask for the field phones, the resolver that get the phones won't be called.
+
+- Each resolver must return a key-value map (JSON), for all to produce the same structure than the user's query.
+
+  For example, this could be the response from the two resolvers:
+
+  ```javascript
+  {
+    id: 1,
+    name: "John Doe"
+  }
+  ```
+
+  ```javascript
+  [
+    {
+      number: "12345678",
+      prefix: "11"
+    },
+    {
+      number: "87654321",
+      prefix: "11"
+    }
+  ]
+  ```
+
+  And this the response to the user's query:
+
+  ```json
+  {
+    "data": {
+      "user": {
+        "id": 1,
+        "name": "John Doe",
+        "phones": [
+          {
+            "number": "12345678",
+            "prefix": "11"
+          },
+          {
+            "number": "87654321",
+            "prefix": "11"
+          },
+        ]
+      }
+    }
+  }
+  ```
+
 ### 3.5- Field-resolvers
 
 ### 3.6- Subscriptions
