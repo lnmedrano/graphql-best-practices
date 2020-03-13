@@ -2,25 +2,27 @@
 
 ## Index
 
-- [1- Objective](#objective)
-- [2- Serving over http](#http)
-- [3- Main elements](#mainElements)
-  - [3.1- Queries](#queries)
-  - [3.2- Mutations](#mutations)
-  - [3.3- Types](#types)
-  - [3.4- Resolvers](#resolvers)
-  - [3.5- Field-resolvers](#fieldResolvers)
-  - [3.6- Subscriptions](#subscriptions)
-  - [3.7- Schemas](#schemas)
-- [4- Nullability](#nullability)
-- [5- Pagination](#pagination)
-- [6- Caching and Batching](#cachingAndBatching)
-- [7- Authentication and Authorization](#auth)
-- [8- Error handling](#errorHandling)
-- [9- API versioning](#versioning)
-- [10- Apollo Server](#apolloServer)
-- [11- Useful Links](#links)
-- [12- Bibliography](#bibliography)
+- [GraphQL Best Practices](#graphql-best-practices)
+  - [Index](#index)
+  - [1- Objective <a name="objective"></a>](#1--objective)
+  - [2- Serving over HTTP <a name="http"></a>](#2--serving-over-http)
+  - [3- Main Elements <a name="mainElements"></a>](#3--main-elements)
+    - [3.1- Queries <a name="queries"></a>](#31--queries)
+    - [3.2- Mutations <a name="mutations"></a>](#32--mutations)
+    - [3.3- Types <a name="types"></a>](#33--types)
+    - [3.4- Resolvers <a name="resolvers"></a>](#34--resolvers)
+    - [3.5- Field-resolvers <a name="fieldResolvers"></a>](#35--field-resolvers)
+    - [3.6- Subscriptions <a name="subscriptions"></a>](#36--subscriptions)
+    - [3.7- Schemas <a name="schemas"></a>](#37--schemas)
+  - [4- Nullability <a name="nullability"></a>](#4--nullability)
+  - [5- Pagination <a name="pagination"></a>](#5--pagination)
+  - [6- Caching and Batching <a name="cachingAndBatching"></a>](#6--caching-and-batching)
+  - [7- Authentication and Authorization <a name="auth"></a>](#7--authentication-and-authorization)
+  - [8- Error Handling <a name="errorHandling"></a>](#8--error-handling)
+  - [9- API Versioning <a name="versioning"></a>](#9--api-versioning)
+  - [10- Apollo Server <a name="apolloServer"></a>](#10--apollo-server)
+  - [11- Useful Links <a name="links"></a>](#11--useful-links)
+  - [12- Bibliography <a name="bibliography"></a>](#12--bibliography)
 
 ## 1- Objective <a name="objective"></a>
 
@@ -72,7 +74,7 @@ The purpose of this document is to present the conventions and standards used at
   }
   ```
 
-- Variables, directives and  are allowed.
+- Variables, directives and fragments are allowed.
 
   ```graphql
   query {
