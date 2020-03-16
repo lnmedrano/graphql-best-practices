@@ -135,22 +135,22 @@ Resolvers, in GraphQL, work the same way for queries and mutations (nevertheless
 
   For example, this could be the response from the two resolvers:
 
-  ```javascript
+  ```json
   {
-    id: 1,
-    name: "John Doe"
+    "id": 1,
+    "name": "John Doe"
   }
   ```
 
-  ```javascript
+  ```json
   [
     {
-      number: "12345678",
-      prefix: "11"
+      "number": "12345678",
+      "prefix": "11"
     },
     {
-      number: "87654321",
-      prefix: "11"
+      "number": "87654321",
+      "prefix": "11"
     }
   ]
   ```
