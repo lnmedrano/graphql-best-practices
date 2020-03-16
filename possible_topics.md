@@ -108,7 +108,7 @@ The purpose of this document is to present the conventions and standards used at
 
 ### 3.4- Resolvers
 
-Resolvers, in graphql, work the same way for queries and mutations (nevertheless remember that we must not use a query resolver to modify nor delete data).
+Resolvers, in GraphQL, work the same way for queries and mutations (nevertheless remember that we must not use a query resolver to modify nor delete data).
 
 - Given that the resolvers are functions, they must follow the naming convention used in the technology and project we are working in.
 
