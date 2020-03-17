@@ -40,7 +40,7 @@ The purpose of this document is to present the conventions and standards used at
   - `users` to get more than one user.
   - `usersFromTags` on some hypothetical case of getting users that match with some tags.
 
-- Arguments must be a set of key-value pairs comma separated (in the resolver the arguments are received in an objetc and destructuring is possible and convenient). A max of 4 arguments is recommended. For example:
+- Arguments must be a set of key-value pairs comma separated (in the resolver the arguments are received in an object and destructuring is possible and convenient). A max of 4 arguments is recommended. For example:
 
   ```graphql
   query {
@@ -103,6 +103,10 @@ The purpose of this document is to present the conventions and standards used at
   ```
 
 ### 3.2- Mutations
+
+Mutations should be named using camelCase. The verb should go first, then the object or "noun". e.g: `createUser`.
+
+Mutations should have only one input argument, named `input`, and should have non-null, unique, input object type. Then you should try to nest the input object, this gives you room to easily deprecate sections of the API or add new ones.
 
 ### 3.3- Types
 
