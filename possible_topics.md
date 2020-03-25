@@ -108,13 +108,13 @@ The purpose of this document is to present the conventions and standards used at
 
 ### 3.4- Resolvers
 
-Resolvers, in GraphQL, work the same way for queries and mutations (nevertheless remember that we must not use a query resolver to modify nor delete data).
+Resolvers in GraphQL work the same way for queries and mutations (nevertheless remember that we must not use a query resolver to modify nor delete data).
 
 - Given that the resolvers are functions, they must follow the naming convention used in the technology and project we are working in.
 
 - Resolvers should be kept as specific as possible. This way, we can take advantage of GraphQL performance.
 
-  For example. Lets suppose we have this query
+  For example. Lets suppose we have this query:
 
   ```graphql
   query{
@@ -129,9 +129,9 @@ Resolvers, in GraphQL, work the same way for queries and mutations (nevertheless
   }
   ```
 
-  If a resolver is used to get `id` and `name`, and another one is used to get the phones; when the user doesn't ask for the field phones, the resolver that get the phones won't be called.
+  If a resolver is used to get `id` and `name`, and another one is used to get the phones; when the user doesn't ask for the field `phones`, the resolver that gets the phones won't be called.
 
-- Each resolver must return a key-value map (JSON), for all to produce the same structure than the user's query.
+- Each resolver must return a key-value map (JSON), for all to produce the same structure than the `user` query.
 
   For example, this could be the response from the two resolvers:
 
