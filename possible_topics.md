@@ -206,12 +206,12 @@ Resolvers in GraphQL work the same way for queries and mutations (nevertheless r
 
 ## 11- Useful Links
 
-- [GraphQL Specification](https://spec.graphql.org/)
-- [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
-- [GraphQL Resolvers: Best Practices](https://medium.com/paypal-engineering/graphql-resolvers-best-practices-cd36fdbcef55) by Mark Stuart
-- [Apollo Blog](https://blog.apollographql.com/)
-- [GraphQL official site](https://graphql.org)
+- [GraphQL Specification](https://spec.graphql.org/).
+- [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/).
+- [GraphQL Resolvers: Best Practices](https://medium.com/paypal-engineering/graphql-resolvers-best-practices-cd36fdbcef55) by Mark Stuart.
+- [Apollo Blog](https://blog.apollographql.com/).
+- [GraphQL official site](https://graphql.org).
 
 ## 12- Bibliography
 
-Bilbiography used by the authors of this documents can be found at [bibliography](./bibliography.md)
+Bilbiography used by the authors of this documents can be found at [bibliography](./bibliography.md).
