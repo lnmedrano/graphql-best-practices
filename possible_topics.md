@@ -2,28 +2,33 @@
 
 ## Index
 
-- [1- Objective](#objective)
-- [2- Serving over http](#http)
-- [3- Main elements](#mainElements)
-  - [3.1- Queries](#queries)
-  - [3.2- Mutations](#mutations)
-  - [3.3- Types](#types)
-  - [3.4- Resolvers](#resolvers)
-  - [3.5- Field-resolvers](#fieldResolvers)
-  - [3.6- Subscriptions](#subscriptions)
-- [4- Nullability](#nullability)
-- [5- Pagination](#pagination)
-- [6- Caching and Batching](#cachingAndBatching)
-- [7- Authentication and Authorization](#auth)
-- [8- Error handling](#errorHandling)
-- [9- API versioning](#versioning)
-- [10- Apollo Server](#apolloServer)
+- [GraphQL Best Practices](#graphql-best-practices)
+  - [Index](#index)
+  - [1- Objective](#1--objective)
+  - [2- Serving over HTTP](#2--serving-over-http)
+  - [3- Main Elements](#3--main-elements)
+    - [3.1- Queries](#31--queries)
+    - [3.2- Mutations](#32--mutations)
+    - [3.3- Types](#33--types)
+    - [3.4- Resolvers](#34--resolvers)
+    - [3.5- Field-resolvers](#35--field-resolvers)
+    - [3.6- Subscriptions](#36--subscriptions)
+    - [3.7- Schemas](#37--schemas)
+  - [4- Nullability](#4--nullability)
+  - [5- Pagination](#5--pagination)
+  - [6- Caching and Batching](#6--caching-and-batching)
+  - [7- Authentication and Authorization](#7--authentication-and-authorization)
+  - [8- Error Handling](#8--error-handling)
+  - [9- API Versioning](#9--api-versioning)
+  - [10- Apollo Server](#10--apollo-server)
+  - [11- Useful Links](#11--useful-links)
+  - [12- Bibliography](#12--bibliography)
 
-## Objective <a name="objective"></a>
+## 1- Objective
 
 The purpose of this document is to present the conventions and standards used at Wolox for GraphQL. It is supposed to cover the main aspects of GraphQL from the Wolox's approach to it.
 
-## Serving over HTTP <a name="http"></a>
+## 2- Serving over HTTP
 
 Most modern web frameworks use a pipeline model where requests are passed through a stack of middleware. GraphQL should be placed after all authentication middleware, so that you have access to the same session and user information you would in your HTTP endpoint handlers.
 
@@ -50,32 +55,86 @@ The response should be returned in the body of the request in JSON format. As me
 
 If there were no errors returned, the `errors` field should not be present on the response. If no data is returned the `data` field should only be included if the error occurred during execution.
 
-## Main elements <a name="mainElements"></a>
+## 3- Main Elements
 
-### Queries <a name="queries"></a>
+### 3.1- Queries
 
-### Mutations <a name="mutations"></a>
+ **Queries must be used only to fetch resources, not to modify nor delete them.**
 
-### Schemas <a name="schemas"></a>
+ Queries names should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, _get_ and _fetch_ verbs shouldn't be used. For example:
 
-### Types <a name="types"></a>
+- `user` to get one user.
+- `users` to get more than one user.
+- `usersFromTags` on some hypothetical case of getting users that match with some tags.
 
-### Resolvers <a name="resolvers"></a>
+Arguments must be a set of key-value pairs comma separated (in the resolver the arguments are received in an object and destructuring is possible and convenient). A max of 4 arguments is recommended.
 
-### Field-resolvers <a name="fieldResolvers"></a>
+Variables, directives and fragments are allowed.
 
-### Subscriptions <a name="subscriptions"></a>
+The queries should be as nested as possible. The fields that are being asked must not be comma separated.
 
-## Nullability <a name="nullability"></a>
+  ```graphql
+  query {
+    user(firstName: 'John', lastName: 'Doe'){
+      firstName
+      lastName
+      email
+      contactUser {
+        firstName
+        lastName
+        email
+      }
+      books {
+        title
+        calification
+        author {
+          firstName
+          lastName
+          birthDate
+        }
+      }
+    }
+  }
+  ```
 
-## Pagination <a name="pagination"></a>
+### 3.2- Mutations
 
-## Caching and Batching <a name="cachingAndBatching"></a>
+Mutations should be named using camelCase. The verb should go first, then the object or "noun". e.g: `createUser`.
 
-## Authentication and Authorization <a name="auth"></a>
+Mutations should have only one input argument, named `input`, and should have non-null, unique, input object type. Then you should try to nest the input object, this gives you room to easily deprecate sections of the API or add new ones.
 
-## Error handling <a name="errorHanling"></a>
+### 3.3- Types
 
-## API versioning <a name="versioning"></a>
+### 3.4- Resolvers
 
-## Apollo Server <a name="apolloServer"></a>
+### 3.5- Field-resolvers
+
+### 3.6- Subscriptions
+
+### 3.7- Schemas
+
+## 4- Nullability
+
+## 5- Pagination
+
+## 6- Caching and Batching
+
+## 7- Authentication and Authorization
+
+## 8- Error Handling
+
+## 9- API Versioning
+
+## 10- Apollo Server
+
+## 11- Useful Links
+
+- [GraphQL Specification](https://spec.graphql.org/)
+- [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/)
+- [GraphQL Resolvers: Best Practices](https://medium.com/paypal-engineering/graphql-resolvers-best-practices-cd36fdbcef55) by Mark Stuart
+- [Apollo Blog](https://blog.apollographql.com/)
+- [GraphQL official site](https://graphql.org)
+
+## 12- Bibliography
+
+Bilbiography used by the authors of this documents can be found at [bibliography](./bibliography.md)
