@@ -30,6 +30,33 @@ The purpose of this document is to present the conventions and standards used at
 
 ## 2- Serving over HTTP
 
+Most modern web frameworks use a pipeline model where requests are passed through a stack of middleware. GraphQL should be placed after all authentication middleware, so that you have access to the same session and user information you would in your HTTP endpoint handlers.
+
+A standard GraphQL POST request should use the `application/json` content type, and include a JSON-encoded body of the following form:
+
+```json
+{
+  "query": "...",
+  "operationName": "...",
+  "variables": { "myVariable": "someValue", ... }
+}
+```
+
+`operationName` and `variables` are optional fields. `operationName` is only required if multiple operations are present in the query.
+
+Although uncommon, GET requests can be used too. The GraphQL query should be specified in the `query` query parameter and variables can be sent as a JSON-encoded string in an additional query parameter called `variables`. If the query contains several named operations, an `operationName` query parameter can be used to control which one should be executed.
+
+The response should be returned in the body of the request in JSON format. As mentioned in the [spec](https://spec.graphql.org/June2018), a query might result in some data and some errors, and those should be returned in a JSON object of the form:
+
+```json
+{
+  "data": { ... },
+  "errors": [ ... ]
+}
+```
+
+If there were no errors returned, the `errors` field should not be present on the response. If no data is returned the `data` field should only be included if the error occurred during execution.
+
 ## 3- Main Elements
 
 ### 3.1- Queries
