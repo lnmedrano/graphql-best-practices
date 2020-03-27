@@ -6,23 +6,28 @@
   - [Index](#index)
   - [1- Objective](#1--objective)
   - [2- Serving over HTTP](#2--serving-over-http)
-  - [3- Main Elements](#3--main-elements)
+  - [3- Naming convention](#3--naming-convention)
     - [3.1- Queries](#31--queries)
     - [3.2- Mutations](#32--mutations)
     - [3.3- Types](#33--types)
     - [3.4- Resolvers](#34--resolvers)
-    - [3.5- Field-resolvers](#35--field-resolvers)
-    - [3.6- Subscriptions](#36--subscriptions)
-    - [3.7- Schemas](#37--schemas)
-  - [4- Nullability](#4--nullability)
-  - [5- Pagination](#5--pagination)
-  - [6- Caching and Batching](#6--caching-and-batching)
-  - [7- Authentication and Authorization](#7--authentication-and-authorization)
-  - [8- Error Handling](#8--error-handling)
-  - [9- API Versioning](#9--api-versioning)
-  - [10- Apollo Server](#10--apollo-server)
-  - [11- Useful Links](#11--useful-links)
-  - [12- Bibliography](#12--bibliography)
+  - [4- Main Elements](#4--main-elements)
+    - [4.1- Queries](#41--queries)
+    - [4.2- Mutations](#42--mutations)
+    - [4.3- Types](#43--types)
+    - [4.4- Resolvers](#44--resolvers)
+    - [4.5- Field-resolvers](#45--field-resolvers)
+    - [4.6- Subscriptions](#46--subscriptions)
+    - [4.7- Schemas](#47--schemas)
+  - [5- Nullability](#5--nullability)
+  - [6- Pagination](#6--pagination)
+  - [7- Caching and Batching](#7--caching-and-batching)
+  - [8- Authentication and Authorization](#8--authentication-and-authorization)
+  - [9- Error Handling](#9--error-handling)
+  - [10- API Versioning](#10--api-versioning)
+  - [11- Apollo Server](#11--apollo-server)
+  - [12- Useful Links](#12--useful-links)
+  - [13- Bibliography](#13--bibliography)
 
 ## 1- Objective
 
@@ -57,17 +62,33 @@ The response should be returned in the body of the request in JSON format. As me
 
 If there were no errors returned, the `errors` field should not be present on the response. If no data is returned the `data` field should only be included if the error occurred during execution.
 
-## 3- Main Elements
+## 3- Naming convention
 
 ### 3.1- Queries
 
- **Queries must be used only to fetch resources, not to modify nor delete them.**
-
- Queries names should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, _get_ and _fetch_ verbs shouldn't be used. For example:
+Queries names should be in camelCase. They could be singular or plural depending on the amount of resources being fetched. In addition, _get_ and _fetch_ verbs shouldn't be used. For example:
 
 - `user` to get one user.
 - `users` to get more than one user.
 - `usersFromTags` on some hypothetical case of getting users that match with some tags.
+
+### 3.2- Mutations
+
+Mutations should be named using camelCase. The verb should go first, then the object or "noun". e.g: `createUser`.
+
+### 3.3- Types
+
+Types should be named using PascalCase, and its fields should be named using camelCase.
+
+### 3.4- Resolvers
+
+Given that the resolvers are functions, they must follow the naming convention used in the technology and project we are working in.
+
+## 4- Main Elements
+
+### 4.1- Queries
+
+ **Queries must be used only to fetch resources, not to modify nor delete them.**
 
 Arguments must be a set of key-value pairs comma separated (in the resolver the arguments are received in an object and destructuring is possible and convenient). A max of 4 arguments is recommended.
 
@@ -99,15 +120,11 @@ The queries should be as nested as possible. The fields that are being asked mus
   }
   ```
 
-### 3.2- Mutations
-
-Mutations should be named using camelCase. The verb should go first, then the object or "noun". e.g: `createUser`.
+### 4.2- Mutations
 
 Mutations should have only one input argument, named `input`, and should have non-null, unique, input object type. Then you should try to nest the input object, this gives you room to easily deprecate sections of the API or add new ones.
 
-### 3.3- Types
-
-Types should be named using PascalCase, and its fields should be named using camelCase.
+### 4.3- Types
 
 Object types should be preferred over simple types when possible. It allows to modify the schema without having to deprecate fields or change some field types introducing breaking changes.
 
@@ -115,11 +132,9 @@ Interfaces and unions are great options for reducing code size and complexity on
 
 *important* Special atention must be paid on circular structures. If type `A` has a field `b` of type `B`, and type `B` has a field `a` of type `A`, a query extremely large could be dangerous: `query { a { b { a {...}}}}`
 
-### 3.4- Resolvers
+### 4.4- Resolvers
 
 Resolvers in GraphQL work the same way for queries and mutations (nevertheless remember that we must not use a query resolver to modify nor delete data).
-
-- Given that the resolvers are functions, they must follow the naming convention used in the technology and project we are working in.
 
 - Resolvers should be kept as specific as possible. This way, we can take advantage of GraphQL performance.
 
@@ -193,27 +208,27 @@ Resolvers in GraphQL work the same way for queries and mutations (nevertheless r
   - `context`: A value which is provided to every resolver and holds important contextual information like the currently logged in user, or access to a database.
   - `info`: A value which holds field-specific information relevant to the current query as well as the schema details.
 
-### 3.5- Field-resolvers
+### 4.5- Field-resolvers
 
-### 3.6- Subscriptions
+### 4.6- Subscriptions
 
-### 3.7- Schemas
+### 4.7- Schemas
 
-## 4- Nullability
+## 5- Nullability
 
-## 5- Pagination
+## 6- Pagination
 
-## 6- Caching and Batching
+## 7- Caching and Batching
 
-## 7- Authentication and Authorization
+## 8- Authentication and Authorization
 
-## 8- Error Handling
+## 9- Error Handling
 
-## 9- API Versioning
+## 10- API Versioning
 
-## 10- Apollo Server
+## 11- Apollo Server
 
-## 11- Useful Links
+## 12- Useful Links
 
 - [GraphQL Specification](https://spec.graphql.org/).
 - [Apollo Server Documentation](https://www.apollographql.com/docs/apollo-server/).
@@ -221,6 +236,6 @@ Resolvers in GraphQL work the same way for queries and mutations (nevertheless r
 - [Apollo Blog](https://blog.apollographql.com/).
 - [GraphQL official site](https://graphql.org).
 
-## 12- Bibliography
+## 13- Bibliography
 
 Bilbiography used by the authors of this documents can be found at [bibliography](./bibliography.md).
