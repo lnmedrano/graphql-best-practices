@@ -107,7 +107,7 @@ Mutations should have only one input argument, named `input`, and should have no
 
 ### 3.3- Types
 
-Types should be named using PascalCase, and it's fields should be named using camelCase.
+Types should be named using PascalCase, and its fields should be named using camelCase.
 
 Object types should be preferred over simple types when possible. It allows to modify the schema without having to deprecate fields or change some field types introducing breaking changes.
 
