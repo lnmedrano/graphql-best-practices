@@ -113,6 +113,8 @@ Object types should be preferred over simple types when possible. It allows to m
 
 Interfaces and unions are great options for reducing code size and complexity on queries and mutations, but its use must be justified as any abstraction in any technology.
 
+*important* Special atention must be paid on circular structures. If type `A` has a field `b` of type `B`, and type `B` has a field `a` of type `A`, a query extremely large could be dangerous: `query { a { b { a {...}}}}`
+
 ### 3.4- Resolvers
 
 Resolvers in GraphQL work the same way for queries and mutations (nevertheless remember that we must not use a query resolver to modify nor delete data).
