@@ -82,7 +82,7 @@ Types should be named using PascalCase, and its fields should be named using cam
 
 ### 3.4- Resolvers
 
-Given that the resolvers are functions, they must follow the naming convention used in the technology and project we are working in.
+Given that resolvers are functions, they must follow the naming convention used in the technology and project we are working in.
 
 ## 4- Main Elements
 
