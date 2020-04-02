@@ -107,6 +107,14 @@ Mutations should have only one input argument, named `input`, and should have no
 
 ### 3.3- Types
 
+Types should be named using PascalCase, and its fields should be named using camelCase.
+
+Object types should be preferred over simple types when possible. It allows to modify the schema without having to deprecate fields or change some field types introducing breaking changes.
+
+Interfaces and unions are great options for reducing code size and complexity on queries and mutations, but its use must be justified as any abstraction in any technology.
+
+*important* Special atention must be paid on circular structures. If type `A` has a field `b` of type `B`, and type `B` has a field `a` of type `A`, a query extremely large could be dangerous: `query { a { b { a {...}}}}`
+
 ### 3.4- Resolvers
 
 Resolvers in GraphQL work the same way for queries and mutations (nevertheless remember that we must not use a query resolver to modify nor delete data).
